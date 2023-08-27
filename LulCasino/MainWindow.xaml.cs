@@ -23,6 +23,9 @@ namespace LulCasino
     {
         CasinoLogic casino;
         Random random;
+        BitmapImage image1;
+        BitmapImage image2;
+        BitmapImage image3;
         public MainWindow()
         {
             InitializeComponent();
@@ -32,6 +35,10 @@ namespace LulCasino
             Slider_Bet.Minimum = 20;
             Slider_Bet.Maximum = 100;
             Slider_Bet.ValueChanged += Slider_Bet_ValueChanged;
+            image1= new BitmapImage(new Uri(@"Images\First.jpg", UriKind.Relative));
+            image1 = new BitmapImage(new Uri("Images/Second.jpg", UriKind.Relative));
+            image1 = new BitmapImage(new Uri(@"Images\Third.jpg", UriKind.Relative));
+            string filePath = Environment.CurrentDirectory;
         }
 
         private void Slider_Bet_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -42,12 +49,20 @@ namespace LulCasino
         private void Button_Spin_Click(object sender, RoutedEventArgs e)
         {
             casino.CasinoSpin(Slider_Bet, TextBlock_Current_money);            
-            int[]d = casino.CasinoTake(casino.slot_s, random, TextBlock_First, TextBlock_Second, TextBlock_Third,Slider_Bet);
+            int[]d = casino.CasinoTake(casino.slot_s, random, Image1, Image2, Image3,Slider_Bet);
             if (d[0] == d[1] & d[0] == d[2])
             {
-
+                
             }
+
             casino.RefreshStat(casino.BankAccount, TextBlock_Current_money);
+        }
+
+        private void Button_Add_Money_Click(object sender, RoutedEventArgs e)
+        {
+            Image myImage = new Image();
+            myImage.Source = new BitmapImage(new Uri("Images/Second.jpg", UriKind.Relative));
+            Image1.Source=myImage.Source;
         }
     }
 }

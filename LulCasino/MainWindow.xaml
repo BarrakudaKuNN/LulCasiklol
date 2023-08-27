@@ -10,7 +10,7 @@
         <TextBlock x:Name="TextBlock_First" HorizontalAlignment="Left" Margin="195,233,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="27" Width="73"/>
         <TextBlock x:Name="TextBlock_Second" HorizontalAlignment="Left" Margin="292,233,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="27" Width="74"/>
         <TextBlock x:Name="TextBlock_Third" HorizontalAlignment="Left" Margin="371,233,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="27" Width="73"/>
-        <Button x:Name="Button_Add_Money" Content="MoneyTake" HorizontalAlignment="Left" Margin="86,313,0,0" VerticalAlignment="Top" Height="26" Width="84"/>
+        <Button x:Name="Button_Add_Money" Content="MoneyTake" HorizontalAlignment="Left" Margin="86,313,0,0" VerticalAlignment="Top" Height="26" Width="84" Click="Button_Add_Money_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="180,313,0,0" TextWrapping="Wrap" Text="Ваш счёт:" VerticalAlignment="Top" Height="26" Width="70"/>
         <TextBlock x:Name="TextBlock_Current_money" HorizontalAlignment="Left" Margin="250,313,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="26" Width="74"/>
         <Button x:Name="Button_Spin" Content="Spin" HorizontalAlignment="Left" Margin="417,296,0,0" VerticalAlignment="Top" Height="43" Width="94" Click="Button_Spin_Click"/>
@@ -18,6 +18,9 @@
         <TextBlock x:Name="TextBlock_Bet" HorizontalAlignment="Left" Margin="250,352,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="70"/>
         <Slider x:Name="Slider_Bet" HorizontalAlignment="Left" Margin="408,352,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock x:Name="TextBlock_slider_value" HorizontalAlignment="Left" Margin="464,375,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="72"/>
+        <Image x:Name="Image1" HorizontalAlignment="Left" Height="144" Margin="134,66,0,0" VerticalAlignment="Top" Width="152" Source="/First.jpg"/>
+        <Image x:Name="Image2" HorizontalAlignment="Left" Height="144" Margin="287,66,0,0" VerticalAlignment="Top" Width="153"/>
+        <Image x:Name="Image3" HorizontalAlignment="Left" Height="144" Margin="440,66,0,0" VerticalAlignment="Top" Width="152"/>
 
     </Grid>
 </Window>
