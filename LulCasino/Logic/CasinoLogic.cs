@@ -13,19 +13,16 @@ namespace LulCasino
     {
         int bankAccount = 1000;
         int stack;
-        int win;
+        int win=0;
 
         Image Image1_Bit = new Image();
-        Image Image2_Bit = new Image();
-        Image Image3_Bit = new Image();
+        List<int> list;
 
-        string pathPic1 = "Images/Second.jpg";
-        string pathPic2 = "Images/Second.jpg";
-        string pathPic3 = "Images/Second.jpg";
+        S1 s1;
+        S1 s2;
+        S1 s3;
 
-        public List<Slot_Item> slot_s;
-        public S1 win_Slot;
-
+        List<Slot_Item> slot_s;
         public int BankAccount { get => bankAccount; set => bankAccount = value; }
         public int Stack { get => stack; set => stack = value; }
         public int Win { get => win; set => win = value; }
@@ -34,52 +31,44 @@ namespace LulCasino
         {
             slot_s = new List<Slot_Item>()
             {
-                new S1(){Id=11,Name="Firs",Cost=10},
-                new S1(){Id=22,Name="Sec",Cost=20},
-                new S1(){Id=33,Name="Trd",Cost=30},
+                new S1(){Id=11,Cost=10, pathPic1="Images/First.jpg"},
+                new S1(){Id=22,Cost=20, pathPic1="Images/Second.jpg"},
+                new S1(){Id=33,Cost=30, pathPic1="Images/Third.jpg"},
             };
-            CasinoPicRefresh(Image1_Bit, Image2_Bit, Image3_Bit);
-
-
-        }
-        public int[] CasinoTake(List<Slot_Item> slots, Random rnd,Image image, Image image2, Image image3, Slider slider)
-        {
             
-            S1 s1;
-            S1 s2;
-            S1 s3;
-            s1 = (S1)slots[rnd.Next(0,3)];
-            s2 = (S1)slots[rnd.Next(0, 3)];
-            s3 = (S1)slots[rnd.Next(0, 3)];
+        }
+        
+        public void CasinoTake(Random rnd,Image image, Image image2, Image image3, Slider slider)
+        {
+            //Объекты классов иконок 
+            
+            // тут мы рандомизируем обекты и приводим их к классу С1
+            s1 = (S1)slot_s[rnd.Next(0,3)];
+            s2 = (S1)slot_s[rnd.Next(0, 3)];
+            s3 = (S1)slot_s[rnd.Next(0, 3)];
 
-            int[] ret= { s1.Id, s2.Id, s3.Id };
+            //Записываем картики в соответсвии с рандомизатором
 
-            image.Source = Image1_Bit.Source;
-            image2.Source = Image2_Bit.Source;
-            image3.Source = Image3_Bit.Source;
+            image.Source = Image1_Bit.Source = new BitmapImage(new Uri(s1.pathPic1, UriKind.Relative));
+            image2.Source = Image1_Bit.Source = new BitmapImage(new Uri(s2.pathPic1, UriKind.Relative));
+            image3.Source = Image1_Bit.Source = new BitmapImage(new Uri(s3.pathPic1, UriKind.Relative));
 
             if (s1.Id == s2.Id & s1.Id == s3.Id)
             {
-                bankAccount += (s1.Cost + s1.Cost + s1.Cost)*(int)slider.Value;
+                win = (s1.Cost + (int)slider.Value) * 6;
+                bankAccount += win;
             }
-            return ret;
 
         }
-        public void RefreshStat(int Bank,TextBlock text)
+        public void RefreshStat(TextBlock text,TextBlock text2)
         {
-            text.Text = Bank.ToString();
+            text.Text = bankAccount.ToString();
+            text2.Text = win.ToString();
         }
         public void CasinoSpin(Slider slider, TextBlock text)
         {
             bankAccount=bankAccount - (int)slider.Value;
             text.Text = bankAccount.ToString();
-        }
-
-        public void CasinoPicRefresh(Image one,Image tw,Image tr)
-        {
-            one.Source = new BitmapImage(new Uri(pathPic1, UriKind.Relative));
-            tw.Source = new BitmapImage(new Uri(pathPic2, UriKind.Relative));
-            tr.Source = new BitmapImage(new Uri(pathPic3, UriKind.Relative));
         }
     }
 }

@@ -23,46 +23,37 @@ namespace LulCasino
     {
         CasinoLogic casino;
         Random random;
-        BitmapImage image1;
-        BitmapImage image2;
-        BitmapImage image3;
         public MainWindow()
         {
             InitializeComponent();
 
             casino = new CasinoLogic();
             random= new Random();
+            TextBlock_Current_money.Text = casino.BankAccount.ToString();
+
             Slider_Bet.Minimum = 20;
             Slider_Bet.Maximum = 100;
             Slider_Bet.ValueChanged += Slider_Bet_ValueChanged;
-            image1= new BitmapImage(new Uri(@"Images\First.jpg", UriKind.Relative));
-            image1 = new BitmapImage(new Uri("Images/Second.jpg", UriKind.Relative));
-            image1 = new BitmapImage(new Uri(@"Images\Third.jpg", UriKind.Relative));
-            string filePath = Environment.CurrentDirectory;
+
+            Button_Add_Money.Click += (s, a) => { casino.BankAccount += 1000; TextBlock_Current_money.Text = casino.BankAccount.ToString(); };
         }
 
         private void Slider_Bet_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            
             TextBlock_slider_value.Text = Math.Round(e.NewValue).ToString();
         }
 
         private void Button_Spin_Click(object sender, RoutedEventArgs e)
         {
             casino.CasinoSpin(Slider_Bet, TextBlock_Current_money);            
-            int[]d = casino.CasinoTake(casino.slot_s, random, Image1, Image2, Image3,Slider_Bet);
-            if (d[0] == d[1] & d[0] == d[2])
-            {
-                
-            }
-
-            casino.RefreshStat(casino.BankAccount, TextBlock_Current_money);
+            casino.CasinoTake( random, Image1, Image2, Image3,Slider_Bet);
+            casino.RefreshStat(TextBlock_Current_money,TextBlock_Win_Prize);
         }
 
         private void Button_Add_Money_Click(object sender, RoutedEventArgs e)
         {
-            Image myImage = new Image();
-            myImage.Source = new BitmapImage(new Uri("Images/Second.jpg", UriKind.Relative));
-            Image1.Source=myImage.Source;
+           
         }
     }
 }

@@ -5,22 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LulCasino"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TextBlock x:Name="TextBlock_First" HorizontalAlignment="Left" Margin="195,233,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="27" Width="73"/>
-        <TextBlock x:Name="TextBlock_Second" HorizontalAlignment="Left" Margin="292,233,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="27" Width="74"/>
-        <TextBlock x:Name="TextBlock_Third" HorizontalAlignment="Left" Margin="371,233,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="27" Width="73"/>
-        <Button x:Name="Button_Add_Money" Content="MoneyTake" HorizontalAlignment="Left" Margin="86,313,0,0" VerticalAlignment="Top" Height="26" Width="84" Click="Button_Add_Money_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="180,313,0,0" TextWrapping="Wrap" Text="Ваш счёт:" VerticalAlignment="Top" Height="26" Width="70"/>
-        <TextBlock x:Name="TextBlock_Current_money" HorizontalAlignment="Left" Margin="250,313,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="26" Width="74"/>
-        <Button x:Name="Button_Spin" Content="Spin" HorizontalAlignment="Left" Margin="417,296,0,0" VerticalAlignment="Top" Height="43" Width="94" Click="Button_Spin_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="417,375,0,0" TextWrapping="Wrap" Text="Ставка:" VerticalAlignment="Top" Height="26" Width="70"/>
-        <TextBlock x:Name="TextBlock_Bet" HorizontalAlignment="Left" Margin="250,352,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="70"/>
-        <Slider x:Name="Slider_Bet" HorizontalAlignment="Left" Margin="408,352,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="TextBlock_slider_value" HorizontalAlignment="Left" Margin="464,375,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="72"/>
-        <Image x:Name="Image1" HorizontalAlignment="Left" Height="144" Margin="134,66,0,0" VerticalAlignment="Top" Width="152" Source="/First.jpg"/>
-        <Image x:Name="Image2" HorizontalAlignment="Left" Height="144" Margin="287,66,0,0" VerticalAlignment="Top" Width="153"/>
-        <Image x:Name="Image3" HorizontalAlignment="Left" Height="144" Margin="440,66,0,0" VerticalAlignment="Top" Width="152"/>
+        Title="Казик" Height="450" Width="700" ResizeMode="NoResize" Icon="/Icon.png">
+    <Grid Margin="0,0,0,-6">
+        <Grid.Background>
+            <ImageBrush ImageSource="/BackGround.png"/>
+        </Grid.Background>
+        <Grid x:Name="All_In_One" HorizontalAlignment="Left" Height="334" Margin="22,67,0,0" VerticalAlignment="Top" Width="548">
+            
+            <Button x:Name="Button_Add_Money" Content="Накинуть денег" HorizontalAlignment="Left" Margin="0,254,0,0" VerticalAlignment="Top" Height="26" Width="104" Click="Button_Add_Money_Click"/>
+            <TextBlock HorizontalAlignment="Left" Margin="158,246,0,0" TextWrapping="Wrap" Text="Ваш счёт:" VerticalAlignment="Top" Height="26" Width="70"/>
+            <TextBlock x:Name="TextBlock_Current_money" HorizontalAlignment="Left" Margin="215,246,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="19" Width="74"/>
+            <Button x:Name="Button_Spin1" Content="Крути" HorizontalAlignment="Left" Margin="395,229,0,0" VerticalAlignment="Top" Height="43" Width="94" Click="Button_Spin_Click" RenderTransformOrigin="0.5,0.5" >
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1"/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="0"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <TextBlock HorizontalAlignment="Left" Margin="395,308,0,0" TextWrapping="Wrap" Text="Ставка:" VerticalAlignment="Top" Height="26" Width="70"/>
+            <TextBlock x:Name="TextBlock_Bet" HorizontalAlignment="Left" Margin="228,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="70"/>
+            <Slider x:Name="Slider_Bet" HorizontalAlignment="Left" Margin="386,285,0,0" VerticalAlignment="Top" Width="120"/>
+            <TextBlock x:Name="TextBlock_slider_value" HorizontalAlignment="Left" Margin="442,308,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="72"/>
+            <Image x:Name="Image1" HorizontalAlignment="Left" Height="144" Margin="89,0,0,0" VerticalAlignment="Top" Width="153" Source="/Images/Third.jpg"/>
+            <Image x:Name="Image2" HorizontalAlignment="Left" Height="144" Margin="242,0,0,0" VerticalAlignment="Top" Width="153" Source="/Third.jpg"/>
+            <Image x:Name="Image3" HorizontalAlignment="Left" Height="144" Margin="395,0,0,0" VerticalAlignment="Top" Width="153" Source="/Images/Third.jpg"/>
+            <TextBlock x:Name="TextBlock_Win_Prize" HorizontalAlignment="Left" Margin="223,274,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="158,274,0,0" TextWrapping="Wrap" Text="Выигрыш:" VerticalAlignment="Top" Width="65"/>
+
+        </Grid>
 
     </Grid>
 </Window>
